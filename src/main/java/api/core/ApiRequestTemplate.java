@@ -53,37 +53,37 @@ public abstract class ApiRequestTemplate implements ApiRequest {
         return this.apiResult;
     }
 
-    @Override
-    public void requestParamValidation() throws RequestParamException {
-        if (getClass().getClasses().length == 0) {
-            return;
-        }
-
-        // // TODO 이건 꼼수 바꿔야 하는데..
-        // for (Object item :
-        // this.getClass().getClasses()[0].getEnumConstants()) {
-        // RequestParam param = (RequestParam) item;
-        // if (param.isMandatory() && this.reqData.get(param.toString()) ==
-        // null) {
-        // throw new RequestParamException(item.toString() +
-        // " is not present in request param.");
-        // }
-        // }
-    }
-
-    public final <T extends Enum<T>> T fromValue(Class<T> paramClass, String paramValue) {
-        if (paramValue == null || paramClass == null) {
-            throw new IllegalArgumentException("There is no value with name '" + paramValue + " in Enum "
-                    + paramClass.getClass().getName());
-        }
-
-        for (T param : paramClass.getEnumConstants()) {
-            if (paramValue.equals(param.toString())) {
-                return param;
-            }
-        }
-
-        throw new IllegalArgumentException("There is no value with name '" + paramValue + " in Enum "
-                + paramClass.getClass().getName());
-    }
+//    @Override
+//    public void requestParamValidation() throws RequestParamException {
+//        if (getClass().getClasses().length == 0) {
+//            return;
+//        }
+//
+//        // // TODO 이건 꼼수 바꿔야 하는데..
+//        // for (Object item :
+//        // this.getClass().getClasses()[0].getEnumConstants()) {
+//        // RequestParam param = (RequestParam) item;
+//        // if (param.isMandatory() && this.reqData.get(param.toString()) ==
+//        // null) {
+//        // throw new RequestParamException(item.toString() +
+//        // " is not present in request param.");
+//        // }
+//        // }
+//    }
+//
+//    public final <T extends Enum<T>> T fromValue(Class<T> paramClass, String paramValue) {
+//        if (paramValue == null || paramClass == null) {
+//            throw new IllegalArgumentException("There is no value with name '" + paramValue + " in Enum "
+//                    + paramClass.getClass().getName());
+//        }
+//
+//        for (T param : paramClass.getEnumConstants()) {
+//            if (paramValue.equals(param.toString())) {
+//                return param;
+//            }
+//        }
+//
+//        throw new IllegalArgumentException("There is no value with name '" + paramValue + " in Enum "
+//                + paramClass.getClass().getName());
+//    }
 }
